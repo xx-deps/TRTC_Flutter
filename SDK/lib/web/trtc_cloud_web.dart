@@ -26,14 +26,14 @@ class TencentTRTCCloudWeb {
     _channel.setMethodCallHandler(pluginInstance.handleMethodCall);
 
     // ignore: undefined_prefixed_name
-    ui.platformViewRegistry.registerViewFactory(trtcCloudChannelView,
-        (int viewId) {
-      var divId = 'HTMLID_$trtcCloudChannelView' + viewId.toString();
-      var element = DivElement()..setAttribute("id", divId);
-      MethodChannel(trtcCloudChannelView + '_$viewId', const StandardMethodCodec(), registrar)
-          .setMethodCallHandler((call) => pluginInstance.handleViewMethodCall(call, element, divId));
-      return element;
-    });
+    // ui.platformViewRegistry.registerViewFactory(trtcCloudChannelView,
+    //     (int viewId) {
+    //   var divId = 'HTMLID_$trtcCloudChannelView' + viewId.toString();
+    //   var element = DivElement()..setAttribute("id", divId);
+    //   MethodChannel(trtcCloudChannelView + '_$viewId', const StandardMethodCodec(), registrar)
+    //       .setMethodCallHandler((call) => pluginInstance.handleViewMethodCall(call, element, divId));
+    //   return element;
+    // });
   }
 
   Future<dynamic> handleViewMethodCall(
@@ -44,7 +44,8 @@ class TencentTRTCCloudWeb {
       // 不能用map，在release模式下有问题
       //Map<String, dynamic>.from(call.arguments);
     }
-    print("============>>> method: ${call.method} , arguments :  ${call.arguments}");
+    print(
+        "============>>> method: ${call.method} , arguments :  ${call.arguments}");
     switch (call.method) {
       case 'startLocalPreview':
         _trtcCloudWrapper!.startLocalPreview(element, divId, args);
@@ -156,16 +157,18 @@ class TencentTRTCCloudWeb {
       case "stopScreenCapture":
         _trtcCloudWrapper!.stopScreenCapture(args);
         return Future.value(true);
-      case "getSDKVersion": 
+      case "getSDKVersion":
         return Future.value(_trtcCloudWrapper!.getSDKVersion());
       case "getDevicesList":
-        String json = await promiseToFuture(_trtcCloudWrapper!.getDevicesList(args));
+        String json =
+            await promiseToFuture(_trtcCloudWrapper!.getDevicesList(args));
         Map map = jsonDecode(json);
         return map;
       case "setCurrentDevice":
         return promiseToFuture(_trtcCloudWrapper!.setCurrentDevice(args));
       case "getCurrentDevice":
-        String json = await promiseToFuture(_trtcCloudWrapper!.getCurrentDevice(args));
+        String json =
+            await promiseToFuture(_trtcCloudWrapper!.getCurrentDevice(args));
         Map map = jsonDecode(json);
         return map;
       default:
