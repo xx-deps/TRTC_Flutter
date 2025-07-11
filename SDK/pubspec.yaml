@@ -1,6 +1,6 @@
 name: tencent_trtc_cloud
 description: With TRTC, you can quickly develop cost-effective, low-latency, and high-quality interactive audio/video services.
-version: 2.9.5
+version: 2.9.6
 repository: https://github.com/LiteAVSDK/TRTC_Flutter
 homepage: https://trtc.io/
 environment:
