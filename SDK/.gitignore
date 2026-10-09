@@ -17,3 +17,6 @@ example/pubspec.lock
 .vscode/
 web/node_modules/
 example/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+
+# FVM Version Cache
+.fvm/
