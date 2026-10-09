@@ -15,7 +15,7 @@
 class TencentTRTCCloudWeb {
   // static late MethodChannel _channel;
   // static TrtcWrapper? _trtcCloudWrapper;
-  static void registerWith(Registrar registrar) {
+  static void registerWith(dynamic registrar) {
     // _channel = MethodChannel(
     //   'trtcCloudChannel',
     //   const StandardMethodCodec(),
@@ -37,7 +37,7 @@ class TencentTRTCCloudWeb {
   }
 
   Future<dynamic> handleViewMethodCall(
-      MethodCall call, Element element, String divId) async {
+      dynamic call, dynamic element, String divId) async {
   //   var args = '';
   //   if (call.arguments != null) {
   //     args = jsonEncode(call.arguments);
@@ -83,7 +83,7 @@ class TencentTRTCCloudWeb {
   //   _trtcCloudWrapper!.sharedInstance();
   }
 
-  Future<dynamic> handleMethodCall(MethodCall call) async {
+  Future<dynamic> handleMethodCall(dynamic call) async {
     return  Future.value(true);
     // print(
     //     "============>>>  method: ${call.method} , arguments :  ${call.arguments}");
